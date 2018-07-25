@@ -1,0 +1,36 @@
+version: 0.2
+
+env:
+  variables:
+    MAVEN_USER_HOME: "./.mvn/home"
+
+phases:
+  install:
+    commands:
+      - echo Entering install phase...
+      - echo Nothing to do in the install phase...
+  pre_build:
+    commands:
+      - echo Entering pre_build phase...
+      - "echo Maven version:"
+      - sh mvnw --version
+  build:
+    commands:
+      - echo Entering build phase...
+      - echo Build started on `date`
+      - unset MAVEN_CONFIG
+      - ./mvnw -Dmaven.test.skip=true package
+  post_build:
+    commands:
+      - echo Entering post_build phase...
+      - echo Build completed on `date`
+      - mv target/application.jar application.jar
+
+artifacts:
+  type: zip
+  files:
+    - .ebextensions/**/*
+    - application.jar
+
+
+

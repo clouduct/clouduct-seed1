@@ -1,0 +1,51 @@
+
+spring:
+  datasource:
+    url: "jdbc:h2:mem:db1r;MODE=PostgreSQL"
+    driver-class-name: "org.h2.Driver"
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        show_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+        use_sql_comments: true
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: false
+#  servlet:
+#    multipart:
+#     max-file-size: 20MB
+#     max-request-size: 20MB
+
+management:
+  endpoint:
+    health:
+      show-details: always
+
+server:
+  port: 8080
+
+app:
+  secret: "i00hN4c@pN77"
+  swagger: true
+  cors:
+    origin: "*"
+  aws:
+    defaultRegion: eu-central-1
+
+logging:
+  level:
+    org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: DEBUG
+  pattern:
+    level: "[%X{mdcUser}%X{mdcIDs}]-%5p"
+
