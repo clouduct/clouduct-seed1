@@ -1,4 +1,4 @@
-Mibelle Skincare Backend
+Clouduct Seed Backend
 ==================================================
 
 This sample code helps get you started with a simple Java web application
