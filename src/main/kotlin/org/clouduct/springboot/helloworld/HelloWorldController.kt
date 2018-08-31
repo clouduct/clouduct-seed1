@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-@RequestMapping("/api",
-        produces = arrayOf(MediaType.APPLICATION_JSON_UTF8_VALUE))
+@RequestMapping("/")
 class HelloWorldController() {
 
     private val logger = LoggerFactory.getLogger(javaClass)
 
-    @GetMapping("/hello")
+    @GetMapping("/", "/api/hello")
     fun retrieveConfig(): ResponseEntity<String> {
         return ResponseEntity.ok("Hello World")
     }
